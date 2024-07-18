@@ -10,6 +10,6 @@ const matchSchema = new Schema({
         player2: { type: Number, default: 0 },
     },
     winner: { type: Schema.ObjectId, ref: "Player", required: true }
-})
+}, { timestamps: true })
 
 export default model("Match", matchSchema)

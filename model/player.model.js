@@ -5,6 +5,6 @@ const playerSchema = new Schema({
     age: { type: Number, required: true, },
     rating: { type: Number, default: 1200 },
     country: { type: String, required: true, },
-})
+}, { timestamps: true })
 
 export default model("Player", playerSchema)

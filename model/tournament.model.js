@@ -5,6 +5,6 @@ const TournamentSchema = new Schema({
     startDate: { type: Date, required: true, },
     endDate: { type: Date },
     participants: [{ type: Schema.ObjectId, ref: "Player" }],
-})
+}, { timestamps: true })
 
 export default model("Tournament", TournamentSchema)

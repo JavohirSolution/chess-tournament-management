@@ -1,16 +1,13 @@
-
-
-const AuthMiddleware = async (req, res, next) => {
+const adminMiddleware = async (req, res, next) => {
     try {
-        const token = req.header('Authorization').replace('Bearer ', '');
-        if (!token) {
-            return res.status(401).json('Access denied. No token provided.');
+        const role = req.user.role;
+        if (role !== "admin") {
+            return res.status(401).json({ message: "Access denied. Only admin can change", error: true })
         }
-        
+        next()
     } catch (error) {
-        return res.status(400).json({
-            message: "Invalid token",
-            error: error.message
-        })
+        console.log(error.message)
     }
 }
+
+export default adminMiddleware
