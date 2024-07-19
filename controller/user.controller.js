@@ -18,7 +18,7 @@ class UserController {
     async login(req, res, next) {
         try {
             const { user, token } = await userService.login(req.body, res);
-            res.status(201).json({
+            res.status(200).json({
                 message: "Logged In",
                 data: user,
                 token: token

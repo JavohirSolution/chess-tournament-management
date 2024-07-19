@@ -10,7 +10,6 @@ class TokenService {
         const tokenn = jwt.verify(token, process.env.JWT_SECRET)
         return tokenn
     }
-
 }
 
 export default new TokenService()

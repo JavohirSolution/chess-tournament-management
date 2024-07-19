@@ -16,7 +16,7 @@ class PlayerController {
     async update(req, res, next) {
         try {
             const player = await playerService.update(req.params.id, req.body, res);
-            res.status(201).json({
+            res.status(200).json({
                 message: "Updated",
                 data: player,
             });
@@ -28,7 +28,7 @@ class PlayerController {
     async delete(req, res, next) {
         try {
             const player = await playerService.delete(req.params.id, res);
-            res.status(201).json({
+            res.status(200).json({
                 message: "Deleted",
                 data: player,
             });
@@ -40,9 +40,21 @@ class PlayerController {
     async view(req, res, next) {
         try {
             const player = await playerService.view(req.params.id, res);
-            res.status(201).json({
+            res.status(200).json({
                 message: "Information about player",
                 data: player,
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    async getAll(req, res, next) {
+        try {
+            const players = await playerService.getAll();
+            res.status(201).json({
+                message: "list of players",
+                data: players,
             });
         } catch (error) {
             console.log(error.message);
